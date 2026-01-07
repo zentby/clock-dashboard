@@ -12,6 +12,8 @@ export default defineConfig({
   plugins: [
     vue(),
     legacy({
+      // iOS 9/10 Safari needs legacy (ES5) output + polyfills.
+      // Vite will serve the legacy bundle via `nomodule`.
       targets: ['ios >= 9'],
       additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
     }),

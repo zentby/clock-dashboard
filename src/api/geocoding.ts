@@ -6,14 +6,12 @@ export async function searchCities(query: string, limit: number = 3): Promise<No
     return []
   }
 
-  const url = new URL('https://nominatim.openstreetmap.org/search')
-  url.searchParams.set('q', trimmedQuery)
-  url.searchParams.set('format', 'json')
-  url.searchParams.set('limit', limit.toString())
-  url.searchParams.set('accept-language', 'zh-CN')
-  url.searchParams.set('addressdetails', '1')
+  // Avoid `URL`/`URLSearchParams` for better old iOS Safari compatibility.
+  const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(trimmedQuery)}&format=json&limit=${encodeURIComponent(
+    limit.toString(),
+  )}&accept-language=zh-CN&addressdetails=1`
 
-  const res = await fetch(url.toString(), {
+  const res = await fetch(url, {
     headers: {
       'User-Agent': 'ClockDashboard/1.0',
     },
