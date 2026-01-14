@@ -26,7 +26,8 @@
     "pinia": "^3.0.4",
     "pinia-plugin-persistedstate": "^4.7.1",
     "tailwind-merge": "^2.2.0",
-    "vue": "^3.4.0"
+    "vue": "^3.4.0",
+    "whatwg-fetch": "^3.6.20"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.7.3",
